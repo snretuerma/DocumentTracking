@@ -13,8 +13,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'username', 'password',
+    protected $guarded = [
+        'username', 'password', 'first_name', 'middle_name',
+        'last_name', 'suffix', 'gender', 'birthday',
+        'id_number'
     ];
 
     /**
@@ -29,5 +31,20 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo('App\Models\Role');
+    }
+
+    public function office()
+    {
+        return $this->belongsTo('App\Models\Office');
+    }
+
+    public function tracking_records()
+    {
+        return $this->hasMany('App\Models\TrackingRecord');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
     }
 }

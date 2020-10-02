@@ -8,6 +8,10 @@ class Role extends Model
 {
     public $timestamp = false;
 
+    protected $guarded = [
+        'name'
+    ];
+
     public function users() {
         return $this->hasMany('App\Models\User');
     }
