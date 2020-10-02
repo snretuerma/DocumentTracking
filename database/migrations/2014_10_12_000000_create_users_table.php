@@ -16,12 +16,19 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('role_id')->index();
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->string('username')->unique();
+            $table->string('username', 50)->unique();
             $table->string('password');
+            $table->string('first_name', 80);
+            $table->string('middle_name', 80);
+            $table->string('last_name', 80);
+            $table->string('suffix', 20)->nullable();
+            $table->unsignedTinyInteger('gender');
+            $table->date('birthday');
+            $table->string('id_number', 50);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
