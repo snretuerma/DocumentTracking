@@ -25,10 +25,19 @@ class CreateUsersTable extends Migration
             $table->unsignedTinyInteger('gender');
             $table->date('birthday');
             $table->string('id_number', 50);
+            $table->unsignedBigInteger('office_id')->index();
+            $table->unsignedBigInteger('division_id')->index()->nullable();
+            $table->unsignedBigInteger('unit_id')->index()->nullable();
+            $table->unsignedBigInteger('sector_id')->index()->nullable();
+            $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('office_id')->references('id')->on('offices');
+            $table->foreign('division_id')->references('id')->on('divisions');
+            $table->foreign('unit_id')->references('id')->on('units');
+            $table->foreign('sector_id')->references('id')->on('sectors');
         });
     }
 
@@ -43,6 +52,18 @@ class CreateUsersTable extends Migration
             $table->dropIndex(['role_id']);
             $table->dropForeign(['role_id']);
             $table->dropColumn('role_id');
+            $table->dropIndex(['office_id']);
+            $table->dropForeign(['office_id']);
+            $table->dropColumn('office_id');
+            $table->dropIndex(['division_id']);
+            $table->dropForeign(['division_id']);
+            $table->dropColumn('division_id');
+            $table->dropIndex(['unit_id']);
+            $table->dropForeign(['unit_id']);
+            $table->dropColumn('unit_id');
+            $table->dropIndex(['sector_id']);
+            $table->dropForeign(['sector_id']);
+            $table->dropColumn('sector_id');
             $table->dropSoftDeletes();
         });
         Schema::dropIfExists('users');
