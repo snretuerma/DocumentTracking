@@ -16,7 +16,8 @@ class User extends Authenticatable
     protected $guarded = [
         'username', 'password', 'first_name', 'middle_name',
         'last_name', 'suffix', 'gender', 'birthday',
-        'id_number'
+        'id_number', 'office_id', 'division_id', 'unit_id',
+        'sector_id', 'is_active'
     ];
 
     /**
@@ -36,6 +37,21 @@ class User extends Authenticatable
     public function office()
     {
         return $this->belongsTo('App\Models\Office');
+    }
+
+    public function division()
+    {
+        return $this->belongsTo('App\Models\Division');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo('App\Models\Unit');
+    }
+
+    public function sector()
+    {
+        return $this->belongsTo('App\Models\Sector');
     }
 
     public function tracking_records()

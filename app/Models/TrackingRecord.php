@@ -11,7 +11,7 @@ class TrackingRecord extends Model
     protected $guarded = [
         'document_id', 'actions', 'status',
         'approved_by', 'touched_by', 'last_touched',
-        'send_to', 'remarks'
+        'forwarded_by', 'forwarded_to', 'remarks'
     ];
 
     public function user()

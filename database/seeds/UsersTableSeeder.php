@@ -24,6 +24,10 @@ class UsersTableSeeder extends Seeder
                 'gender' => rand(1, 2),
                 'birthday' => $faker->date,
                 'id_number' => $faker->ssn,
+                'office_id' => rand(1, 3),
+                'division_id' => rand(1, 3),
+                'unit_id' => rand(1, 3),
+                'is_active' => true,
                 'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
             ]);
         }
@@ -40,6 +44,10 @@ class UsersTableSeeder extends Seeder
                 'gender' => rand(1, 2),
                 'birthday' => $faker->date,
                 'id_number' => $faker->ssn,
+                'office_id' => rand(1, 3),
+                'division_id' => rand(1, 3),
+                'unit_id' => rand(1, 3),
+                'is_active' => true,
                 'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
             ]);
         }
@@ -56,6 +64,10 @@ class UsersTableSeeder extends Seeder
                 'gender' => rand(1, 2),
                 'birthday' => $faker->date,
                 'id_number' => $faker->ssn,
+                'office_id' => rand(1, 3),
+                'division_id' => rand(1, 3),
+                'unit_id' => rand(1, 3),
+                'is_active' => true,
                 'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
             ]);
         }
