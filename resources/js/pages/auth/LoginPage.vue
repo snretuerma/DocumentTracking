@@ -57,39 +57,39 @@
                             <v-toolbar-title>Login</v-toolbar-title>
                         </v-toolbar>
                         <v-card-text>
-                        <v-alert
-                            dense
-                            outlined
-                            dismissible
-                            v-if="submitStatus === 'ERROR'"
-                            type="error"
-                        >
-                            Login Failed. Incorrect username or password
-                        </v-alert>
-                        <v-form>
-                            <v-text-field
-                                prepend-icon="fas fa-user-circle"
-                                name="username"
-                                v-model="username"
-                                label="Username"
-                                id="username"
-                                type="text"
-                                required
-                            ></v-text-field>
-                            <v-text-field
-                                prepend-icon="fas fa-key"
-                                name="password"
-                                v-model="password"
-                                label="Password"
-                                id="password"
-                                type="password"
-                                required
-                            ></v-text-field>
-                        </v-form>
+                            <v-alert
+                                dense
+                                outlined
+                                dismissible
+                                v-if="submitStatus === 'ERROR'"
+                                type="error"
+                            >
+                                Login Failed. Incorrect username or password
+                            </v-alert>
+                            <v-form>
+                                <v-text-field
+                                    prepend-icon="fas fa-user-circle"
+                                    name="username"
+                                    v-model="username"
+                                    label="Username"
+                                    id="username"
+                                    type="text"
+                                    required
+                                ></v-text-field>
+                                <v-text-field
+                                    prepend-icon="fas fa-key"
+                                    name="password"
+                                    v-model="password"
+                                    label="Password"
+                                    id="password"
+                                    type="password"
+                                    required
+                                ></v-text-field>
+                            </v-form>
                         </v-card-text>
                         <v-card-actions >
-                        <v-spacer></v-spacer>
-                        <v-btn dark color="blue darken-3" @click="handleLoginForm()">Login</v-btn>
+                            <v-spacer></v-spacer>
+                            <v-btn dark color="blue darken-3" @click="handleLoginForm()">Login</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
@@ -116,7 +116,7 @@ export default {
                 password: this.password,
             })
             .then(response => {
-                window.location.reload()
+                window.location.reload();
             })
             .catch(error => {
                 console.log(error.response.data);

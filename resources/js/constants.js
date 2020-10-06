@@ -13,3 +13,10 @@ export const IS_TERMINAL = [
     'Terminal',
     'Routed to Governor'
 ];
+
+export const ROLES = [
+    'Administrator',
+    'User',
+    'GO',
+    'Observer'
+];

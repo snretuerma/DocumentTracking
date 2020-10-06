@@ -12,7 +12,7 @@ class Document extends Model
         'tracking_code', 'title', 'document_type_id',
         'originating_office', 'current_office', 'sender_name',
         'page_count', 'date_filed', 'is_terminal',
-        'remarks', 'attachment_page_count'
+        'remarks', 'attachment_page_count', 'external_office_id'
     ];
 
     public function office()
@@ -28,5 +28,10 @@ class Document extends Model
     public function document_type()
     {
         return $this->belongsTo('App\Models\DocumentType');
+    }
+
+    public function external_office()
+    {
+        return $this->hasOne('App\Models\ExternalOffice');
     }
 }

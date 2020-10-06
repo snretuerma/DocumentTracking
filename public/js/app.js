@@ -1941,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
 //
 //
 //
@@ -1996,6 +1997,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     navUser: {
@@ -2007,21 +2012,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     roleName: function roleName() {
-      if (this.navUser.role_id) {
-        switch (this.navUser.role_id) {
-          case 1:
-            return 'Administrator';
-            break;
-
-          case 2:
-            return 'User';
-            break;
-
-          case 3:
-            return 'Observer';
-            break;
-        }
-      }
+      var role_name = '';
+      role_name = this.navUser.role_id ? _constants__WEBPACK_IMPORTED_MODULE_0__["ROLES"][this.navUser.role_id - 1] : '';
+      return role_name;
     }
   },
   data: function data() {
@@ -2045,7 +2038,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error.response.data);
       });
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -38458,7 +38452,7 @@ var render = function() {
                     "v-list-item",
                     { attrs: { "two-line": "" } },
                     [
-                      _c("v-list-item-avatar", [
+                      _c("v-list-item-avatar", { attrs: { left: "" } }, [
                         _c("img", {
                           attrs: {
                             src:
@@ -38493,7 +38487,7 @@ var render = function() {
                 return [
                   _c(
                     "div",
-                    { staticClass: "pa-2" },
+                    { staticClass: "pa-2 d-md-none d-lg-none d-xl-none" },
                     [
                       _c(
                         "v-btn",
@@ -38583,7 +38577,7 @@ var render = function() {
           _c(
             "v-app-bar-nav-icon",
             {
-              staticClass: "d.none .d-sm-flex",
+              staticClass: "d-md-none d-lg-none d-xl-none",
               on: {
                 click: function($event) {
                   $event.stopPropagation()
@@ -38789,7 +38783,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                            Login Failed. Incorrect username or password\n                        "
+                                    "\n                                Login Failed. Incorrect username or password\n                            "
                                   )
                                 ]
                               )
@@ -95037,6 +95031,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserNavigation_vue_vue_type_template_id_0a5703ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/constants.js":
+/*!***********************************!*\
+  !*** ./resources/js/constants.js ***!
+  \***********************************/
+/*! exports provided: TRACKING_ACTIONS, TRACKING_STATUS, LOG_ACTIONS, IS_TERMINAL, ROLES */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TRACKING_ACTIONS", function() { return TRACKING_ACTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TRACKING_STATUS", function() { return TRACKING_STATUS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_ACTIONS", function() { return LOG_ACTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IS_TERMINAL", function() { return IS_TERMINAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ROLES", function() { return ROLES; });
+var TRACKING_ACTIONS = [];
+var TRACKING_STATUS = [];
+var LOG_ACTIONS = ['add', 'edit', 'delete'];
+var IS_TERMINAL = ['Non-terminal', 'Terminal', 'Routed to Governor'];
+var ROLES = ['Administrator', 'User', 'GO', 'Observer'];
 
 /***/ }),
 

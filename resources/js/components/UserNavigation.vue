@@ -1,16 +1,19 @@
 <template>
 <div>
-    <v-navigation-drawer app v-model="drawer">
+    <v-navigation-drawer
+        app
+        v-model="drawer"
+    >
         <template v-slot:prepend>
         <v-list-item two-line>
-        <v-list-item-avatar>
-        <img src="https://randomuser.me/api/portraits/women/81.jpg">
-        </v-list-item-avatar>
+            <v-list-item-avatar left>
+                <img src="https://randomuser.me/api/portraits/women/81.jpg">
+            </v-list-item-avatar>
 
-        <v-list-item-content>
-        <v-list-item-title>{{navUser.username}}</v-list-item-title>
-        <v-list-item-subtitle>{{roleName}}</v-list-item-subtitle>
-        </v-list-item-content>
+            <v-list-item-content>
+                <v-list-item-title>{{navUser.username}}</v-list-item-title>
+                <v-list-item-subtitle>{{roleName}}</v-list-item-subtitle>
+            </v-list-item-content>
         </v-list-item>
         </template>
 
@@ -33,7 +36,7 @@
         </v-list>
 
         <template v-slot:append>
-            <div class="pa-2">
+            <div class="pa-2 d-md-none d-lg-none d-xl-none">
                 <v-btn block @click.stop="drawer = !drawer">
                     Close
                 </v-btn>
@@ -45,7 +48,7 @@
         color="blue darken-3"
         dark
     >
-        <v-app-bar-nav-icon class="d.none .d-sm-flex" @click.stop="drawer = !drawer">
+        <v-app-bar-nav-icon class="d-md-none d-lg-none d-xl-none" @click.stop="drawer = !drawer">
             <i class="fas fa-bars"/>
         </v-app-bar-nav-icon>
         <v-toolbar-title>Logo</v-toolbar-title>
@@ -54,6 +57,7 @@
 </template>
 
 <script>
+import * as constants from "../constants";
 export default {
     props:{
         navUser: {
@@ -63,19 +67,9 @@ export default {
     },
     computed: {
         roleName() {
-            if(this.navUser.role_id) {
-                switch(this.navUser.role_id) {
-                    case 1:
-                        return 'Administrator'
-                        break;
-                    case 2:
-                        return 'User'
-                        break;
-                    case 3:
-                        return 'Observer'
-                        break;
-                }
-            }
+            var role_name = '';
+            role_name = this.navUser.role_id ? constants.ROLES[this.navUser.role_id - 1] : '';
+            return role_name;
         }
     },
     data: () => ({
@@ -87,16 +81,18 @@ export default {
         ],
     }),
     methods: {
-    handleLogout() {
-        axios
-        .post("logout", {})
-        .then((response) => {
-            window.location.reload();
-        })
-        .catch((error) => {
-            console.log(error.response.data);
-        });
+        handleLogout() {
+            axios
+            .post("logout", {})
+            .then((response) => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            });
+        },
     },
-    },
+    mounted() {
+    }
 };
 </script>

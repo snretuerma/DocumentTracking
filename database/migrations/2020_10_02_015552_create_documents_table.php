@@ -18,7 +18,8 @@ class CreateDocumentsTable extends Migration
             $table->string('tracking_code', 120);
             $table->string('title');
             $table->boolean('is_external')->default(false);
-            $table->unsignedBigInteger('document_type_id');
+            $table->unsignedBigInteger('external_office_id')->index()->nullable();
+            $table->unsignedBigInteger('document_type_id')->index()->nullable();
             $table->unsignedBigInteger('originating_office')->index()->nullable();
             $table->unsignedBigInteger('current_office')->index()->nullable();
             $table->string('sender_name')->nullable();
@@ -31,6 +32,7 @@ class CreateDocumentsTable extends Migration
             $table->softDeletes();
             $table->foreign('originating_office')->references('id')->on('offices');
             $table->foreign('current_office')->references('id')->on('offices');
+            $table->foreign('external_office_id')->references('id')->on('external_offices');
             $table->foreign('document_type_id')->references('id')->on('document_types');
         });
     }
@@ -49,6 +51,9 @@ class CreateDocumentsTable extends Migration
             $table->dropIndex(['current_office']);
             $table->dropForeign(['current_office']);
             $table->dropColumn('current_office');
+            $table->dropIndex(['external_office_id']);
+            $table->dropForeign(['external_office_id']);
+            $table->dropColumn('external_office_id');
             $table->dropIndex(['document_type_id']);
             $table->dropForeign(['document_type_id']);
             $table->dropColumn('document_type_id');
