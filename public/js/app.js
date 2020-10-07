@@ -2165,17 +2165,18 @@ __webpack_require__.r(__webpack_exports__);
       submitStatus: null
     };
   },
-  methods: {
-    handleLoginForm: function handleLoginForm() {
-      axios.post('login', {
-        username: this.username,
-        password: this.password
-      }).then(function (response) {
-        window.location.reload();
-      })["catch"](function (error) {
-        console.log(error.response.data);
-      });
-    }
+  methods: {// handleLoginForm() {
+    //     axios.post('login', {
+    //         username: this.username,
+    //         password: this.password,
+    //     })
+    //     .then(response => {
+    //         window.location.reload();
+    //     })
+    //     .catch(error => {
+    //         console.log(error.response.data);
+    //     });
+    // }
   }
 });
 
@@ -38791,6 +38792,7 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-form",
+                            { attrs: { action: "login" } },
                             [
                               _c("v-text-field", {
                                 attrs: {
@@ -38841,14 +38843,7 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-btn",
-                            {
-                              attrs: { dark: "", color: "blue darken-3" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.handleLoginForm()
-                                }
-                              }
-                            },
+                            { attrs: { dark: "", color: "blue darken-3" } },
                             [_vm._v("Login")]
                           )
                         ],

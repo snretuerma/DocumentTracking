@@ -66,7 +66,7 @@
                             >
                                 Login Failed. Incorrect username or password
                             </v-alert>
-                            <v-form>
+                            <v-form action="login">
                                 <v-text-field
                                     prepend-icon="fas fa-user-circle"
                                     name="username"
@@ -89,7 +89,7 @@
                         </v-card-text>
                         <v-card-actions >
                             <v-spacer></v-spacer>
-                            <v-btn dark color="blue darken-3" @click="handleLoginForm()">Login</v-btn>
+                            <v-btn dark color="blue darken-3">Login</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
@@ -110,18 +110,18 @@ export default {
     submitStatus: null
   }),
   methods: {
-        handleLoginForm() {
-            axios.post('login', {
-                username: this.username,
-                password: this.password,
-            })
-            .then(response => {
-                window.location.reload();
-            })
-            .catch(error => {
-                console.log(error.response.data);
-            });
-        }
+        // handleLoginForm() {
+        //     axios.post('login', {
+        //         username: this.username,
+        //         password: this.password,
+        //     })
+        //     .then(response => {
+        //         window.location.reload();
+        //     })
+        //     .catch(error => {
+        //         console.log(error.response.data);
+        //     });
+        // }
     },
 };
 </script>
